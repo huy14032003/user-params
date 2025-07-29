@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    #upload {
+      width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-wrap: nowrap;
+      
+    }
+    .uploadfile {
+      position: relative;
+    }
+    .uploadfile i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      left: 10px;
+    }
+    .wrapper
+    {
+        border: 1px solid green;
+        padding: 15px;position: relative;
+        margin-top: 50px;
+        z-index: 1;
+        border-radius: 15px;
+    }
+    .button
+    {
+        position: absolute;
+        transform: translateY(-70%);
+        z-index: 2;
+        margin-left: 20px;
+    }
+  .button button {
+  width: 100px;
+  border: none;
+  
+  background-color: #fff;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.button button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  /* left: 0; */
+  height: 2px;
+  width: 0%;
+  background-color: black;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.button button.active
+{
+    font-weight: bold;
+    color: rgb(55, 0, 255);
+}
+.button button.active::after {
+  width: 100%;
+}
+  </style>
+  <body class="m-3">
+    <div class="button">
+
+        <button id="btntab1">click tab 1</button><button  id="btntab2">click tab 2</button><button  id="btntab3">click tab 3</button>
+        
+    </div>
+    <div class="wrapper">
+      <div class="tab1">
+        <input type="text" />
+        huy nè
+        <div class="uploadfile ms-5">
+          <input type="file" id="file-name" hidden="hidden" />
+          <i class="bi bi-cloud-arrow-up"></i>
+          <button id="upload">upload file</button>
+        </div>
+      </div>
+      <div class="tab2">
+        jgshufhueiwfhjdksf
+        <input type="text">
+        gjkdfshnjvshnfdisg
+      </div>
+    </div>
+    <script>
+      document.querySelector("#upload").addEventListener("click", () => {
+        document.querySelector("#file-name").click();
+      });
+      document.querySelector("#file-name").addEventListener("change", () => {
+        document.querySelector("#upload").innerHTML =
+          document.querySelector("#file-name").files[0].name;
+      });
+
+
+      const btntab1=document.querySelector('#btntab1')
+      const btntab2=document.querySelector('#btntab2')
+      const btntab3=document.querySelector('#btntab3')
+      const tab1=document.querySelector('.tab1');
+      const tab2=document.querySelector('.tab2');
+      tab2.style.display='none'
+      btntab1.classList.add('active')
+btntab1.addEventListener('click',()=>{
+    tab1.style.display=''
+    tab2.style.display='none'
+    btntab1.classList.add('active')
+    btntab2.classList.remove('active')
+    btntab3.classList.remove('active')
+})
+btntab2.addEventListener('click',()=>{
+    tab2.style.display=''
+    tab1.style.display='none'
+    btntab2.classList.add('active')
+    btntab1.classList.remove('active')
+    btntab3.classList.remove('active')
+})
+btntab3.addEventListener('click',()=>{
+  
+    btntab3.classList.add('active')
+    btntab1.classList.remove('active')
+    btntab2.classList.remove('active')
+})
+    </script>
+  </body>
+</html>
